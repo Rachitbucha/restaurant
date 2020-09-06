@@ -4,8 +4,12 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-
-        <form action="{{route('food.store')}}" method="post">@csrf
+        @if(Session::has('message'))
+            <div class="alert alert-success" role="alert">
+                {{Session::get('message')}}
+            </div>
+            @endif
+        <form action="{{route('food.store')}}" method="post" enctype="multipart/form-data">@csrf
             <div class="card">
                 <div class="card-header">Add new Food</div>
 
@@ -21,7 +25,7 @@
                   </div>
                   <div class="form-group">
                     <label for="description">Description</label>
-                    <textarea name="description" class="form-control @error('description') is-invalid @enderror" cols="30" rows="10"></textarea>
+                    <textarea name="description" class="form-control @error('description') is-invalid @enderror"></textarea>
                     @error('description')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -55,7 +59,7 @@
                   </div>
                   <div class="form-group">
                     <label for="image">Image</label>
-                    <input type="text" name="image" class="form-control @error('image') is-invalid @enderror">
+                    <input type="file" name="image" class="form-control @error('image') is-invalid @enderror">
                     @error('image')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
