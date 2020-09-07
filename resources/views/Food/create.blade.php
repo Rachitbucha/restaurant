@@ -44,8 +44,8 @@
                   <div class="form-group">
                     <label for="name">Category</label>
                     <select name="category" class="form-control @error('category') is-invalid @enderror" id="">
+                    <option value="">Select Category</option>
                         @foreach(App\Category::all() as $category)
-                            <option value="">Select Category</option>
                             <option value="{{$category->id}}">
                                 {{$category->name}}
                             </option>
