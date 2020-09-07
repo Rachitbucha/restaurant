@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Food;
+use App\Category;
 
 class FoodController extends Controller
 {
@@ -134,5 +135,17 @@ class FoodController extends Controller
 
         return redirect()->route('food.index')->with('message', 'Food has been deleted');
 
+    }
+
+    public function listfood()
+    {
+        $categories = Category::with('food')->get();
+        return view ('index',compact('categories'));
+    }
+
+    public function view($id)
+    {
+        $food = Food::find($id);
+        return view('food.detail',compact('food'));
     }
 }
