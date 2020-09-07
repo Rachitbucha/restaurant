@@ -32,8 +32,8 @@
                                 <td><img src="{{asset('images')}}/{{$food -> image}}" width ="100" ></td>
                                 <td>{{$food -> name}}</td>
                                 <td>{{$food -> description}}</td>
-                                <td>{{$food -> price}}</td>
-                                <td>{{$food -> category_id}}</td>
+                                <td>₹{{$food -> price}}</td>
+                                <td>{{$food -> category-> name}}</td>
                                 <td>
                                     <a href="{{route('food.edit', [$food->id])}}"><button class="btn btn-outline-success">Edit</button></a>
                                 </td>
@@ -77,6 +77,7 @@
                             <td> No Food to Display </td>
                         @endif
                         </tbody>
+                        {{$foods->links()}}
 
                     </table>
                 </div>
